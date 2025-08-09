@@ -1,9 +1,9 @@
 # From Action to Reaction: LatentSpace Regularization and Alignment for Human Reaction Motion Generation with Intermediate Motion Semantics
 
 
-The official PyTorch implementation of the paper [**"From Action to Reaction: LatentSpace Regularization and Alignment for Human Reaction Motion Generation with Intermediate Motion Semantics"**](https://alimanjotho.github.io/ls-remgm/).
+The official PyTorch implementation of the paper [**"From Action to Reaction: LatentSpace Regularization and Alignment for Human Reaction Motion Generation with Intermediate Motion Semantics"**](https://alimanjotho.github.io/ls-re-mgm/).
 
-Please visit our [**webpage**](https://alimanjotho.github.io/ls-remgm/) for more details.
+Please visit our [**webpage**](https://alimanjotho.github.io/ls-re-mgm/) for more details.
 
 ![teaser](assets/graphical_abstract.png)
 
