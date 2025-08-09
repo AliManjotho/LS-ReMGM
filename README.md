@@ -1,9 +1,9 @@
-# LLM-FQK-T2M: LLM-Guided Fuzzy Kinematic Modeling for Resolving Kinematic Uncertainties and Linguistic Ambiguities in Text-to-Motion Generation
+# From Action to Reaction: LatentSpace Regularization and Alignment for Human Reaction Motion Generation with Intermediate Motion Semantics
 
 
-The official PyTorch implementation of the paper [**"LLM-Guided Fuzzy Kinematic Modeling for Resolving Kinematic Uncertainties and Linguistic Ambiguities in Text-to-Motion Generation"**](https://alimanjotho.github.io/llm-fqk-t2m/).
+The official PyTorch implementation of the paper [**"From Action to Reaction: LatentSpace Regularization and Alignment for Human Reaction Motion Generation with Intermediate Motion Semantics"**](https://alimanjotho.github.io/ls-re-mgm/).
 
-Please visit our [**webpage**](https://alimanjotho.github.io/llm-fqk-t2m/) for more details.
+Please visit our [**webpage**](https://alimanjotho.github.io/LS-ReMGM/) for more details.
 
 ![teaser](assets/graphical_abstract.png)
 
@@ -26,7 +26,7 @@ This code was tested on `Windows11 24H2` and requires:
 ### 2. Setup miniconda environment
 ```shell
 conda env create -f environment.yml
-conda activate cmdm
+conda activate lsremgm
 python -m spacy download en_core_web_sm
 pip install git+https://github.com/openai/CLIP.git
 ```
@@ -59,34 +59,28 @@ cp -r ../HumanML3D/HumanML3D llm-fqk-t2m/dataset/HumanML3D
 
 * Download the pretrained models and place then unzip and place them in `./checkpoints/`. 
 
-* **HumanML3D** ([cmdm_humanml3d](https://drive.google.com/file/d/1JrVp4zO-gOYJAadhF1i_JemJje7Wzuw6/view?usp=sharing))
-* **KIT** ([cmdm_kitml](https://drive.google.com/file/d/1SHCRcE0es31vkJMLGf9dyLe7YsWj7pNL/view?usp=sharing))
+* **HumanML3D** ([lsremgm_humanml3d](https://drive.google.com/file/d/1JrVp4zO-gOYJAadhF1i_JemJje7Wzuw6/view?usp=sharing))
+* **KIT** ([lsremgm_kitml](https://drive.google.com/file/d/1SHCRcE0es31vkJMLGf9dyLe7YsWj7pNL/view?usp=sharing))
 
-### 5. Setup LLaMA3.1
-* Download the install Ollama: https://ollama.com/download
-* Run following command in command prompt:
-```shell
-ollama run llama3.1:8b
-```
 
 ## Motion Generation
 
 ### Generate from a single prompt
 
 ```shell
-python -m sample_cmdm.sample --model_path ./checkpoints/cmdm_humanml3d_000294000/cmdm_humanml3d_000294000.pt --text_prompt "a person is jumping on floor" --cuda True --motion_length 9
+python -m sample_lsremgm.sample --model_path ./checkpoints/lsremgm_humanml3d_000294000/lsremgm_humanml3d_000294000.pt --text_prompt "a person is jumping on floor" --cuda True --motion_length 9
 ```
 
 ### Generate from test set prompts
 
 ```shell
-python -m sample_cmdm.sample --model_path ./checkpoints/cmdm_humanml3d_000294000/cmdm_humanml3d_000294000.pt --num_samples 10 --num_repetitions 3
+python -m sample_lsremgm.sample --model_path ./checkpoints/lsremgm_humanml3d_000294000/lsremgm_humanml3d_000294000.pt --num_samples 10 --num_repetitions 3
 ```
 
 ### Generate from text file
 
 ```shell
-python -m sample_cmdm.sample --model_path ./checkpoints/cmdm_humanml3d_000294000/cmdm_humanml3d_000294000.pt --input_text ./assets/sample_prompts.txt
+python -m sample_lsremgm.sample --model_path ./checkpoints/lsremgm_humanml3d_000294000/lsremgm_humanml3d_000294000.pt --input_text ./assets/sample_prompts.txt
 ```
 
 
@@ -146,16 +140,16 @@ python -m visualize.render_mesh --input_path /path/to/mp4/stick/figure/file
 
 
 
-## Train CMDM
+## Train LS-ReMGM
 
 **HumanML3D**
 ```shell
-python -m train.train_cmdm --save_dir checkpoints/cmdm_humanml3d_1 --dataset humanml
+python -m train.train_lsremgm --save_dir checkpoints/lsremgm_humanml3d_1 --dataset humanml
 ```
 
 **KIT**
 ```shell
-python -m train.train_cmdm --save_dir checkpoints/cmdm_kitml_1 --dataset kit
+python -m train.train_lsremgm --save_dir checkpoints/lsremgm_kitml_1 --dataset kit
 ```
 
 
@@ -171,12 +165,12 @@ python -m train.train_cmdm --save_dir checkpoints/cmdm_kitml_1 --dataset kit
 
 **HumanML3D**
 ```shell
-python -m evaluations.eval_humanml --model_path ./checkpoints/cmdm_humanml3d_000294000/cmdm_humanml3d_000294000.pt
+python -m evaluations.eval_humanml --model_path ./checkpoints/lsremgm_humanml3d_000294000/lsremgm_humanml3d_000294000.pt
 ```
 
 **KIT**
 ```shell
-python -m evaluations.eval_humanml --model_path ./checkpoints/cmdm_kitml_000294000/cmdm_kitml_000294000.pt
+python -m evaluations.eval_humanml --model_path ./checkpoints/lsremgm_kitml_000294000/lsremgm_kitml_000294000.pt
 ```
 
 
@@ -185,10 +179,10 @@ python -m evaluations.eval_humanml --model_path ./checkpoints/cmdm_kitml_0002940
 ## Bibtex
 ```
 @article{
-manjotho2025llmfqkt2m,
-title={LLM-Guided Fuzzy Kinematic Modeling for Resolving Kinematic Uncertainties and Linguistic Ambiguities in Text-to-Motion Generation},
+manjotho2025lsremgm,
+title={From Action to Reaction: LatentSpace Regularization and Alignment for Human Reaction Motion Generation with Intermediate Motion Semantics},
 author={Ali Asghar Manjotho and Tekie Tsegay Tewolde and Ramadhani Ally Duma and Zhendong Niu},
-journal={Expert Systems With Applications},
+journal={IEEE Transactions on Multiledia},
 year={2025}
 }
 ```
