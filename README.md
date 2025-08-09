@@ -95,10 +95,6 @@ python -m sample_lsremgm.sample --model_path ./checkpoints/lsremgm_humanml3d_000
 * `motions.npy` file with text prompts and xyz positions of the generated animation
 * `prompt##_rep##.mp4` - a stick figure animation for each generated motion.
 
-It will look something like this:
-
-![example](assets/video_1.gif)
-![example](assets/video_smpl.gif)
 
 
 ### Rendering SMPL meshes  in Blender
